@@ -13,7 +13,6 @@ export default async function fetchImages(
     if (!res.ok) throw new Error("Fetch Images error!\n");
 
     const imagesResults: ImagesResults = await res.json();
-    console.log(imagesResults);
 
     const parseData = ImagesSchemaWithPhotos.parse(imagesResults);
 

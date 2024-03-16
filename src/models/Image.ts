@@ -2,9 +2,9 @@ import { z } from "zod";
 
 const BasicImageSchema = z.object({
   page: z.number(),
-  pre_page: z.number(),
-  prev_page: z.number().optional(),
-  next_page: z.number().optional(),
+  per_page: z.number(),
+  prev_page: z.string().optional(),
+  next_page: z.string().optional(),
   total_results: z.number(),
 });
 
