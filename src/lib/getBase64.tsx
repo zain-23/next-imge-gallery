@@ -11,9 +11,12 @@ const getBase64 = async (imgUrl: string) => {
 
     const buffer = await res.arrayBuffer();
 
-    const { base64 } = await getPlaiceholder(Buffer.from(buffer));
+    const {
+      base64,
+      color: { hex },
+    } = await getPlaiceholder(Buffer.from(buffer));
 
-    return base64;
+    return { base64, hex };
   } catch (error) {
     if (error instanceof Error) console.log(error.stack);
   }
@@ -29,7 +32,8 @@ export const addBlurDataUrls = async (
   const base64Results = await Promise.all(base64Promises);
 
   const photosWithBlur: Photo[] = images.photos.map((photo, i) => {
-    photo.blurredDataUrl = base64Results[i];
+    photo.blurredDataUrl = base64Results[i]?.base64;
+    photo.color = base64Results[i]?.hex;
     return photo;
   });
   return photosWithBlur;

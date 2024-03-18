@@ -18,11 +18,10 @@ const Gallery = async ({ topic }: Props) => {
   if (!images) return <h2 className="m-4 text-2xl font-bold"></h2>;
 
   const photosWithBlur = await addBlurDataUrls(images);
-  console.log(photosWithBlur);
 
   return (
     <main className="max-w-7xl mx-auto">
-      <section className="px-2 my-3 grid grid-cols-gallery gap-2">
+      <section className="px-1 my-3 grid grid-cols-gallery auto-rows-[10px]">
         {photosWithBlur.map((photo) => (
           <ImgContainer photo={photo} key={photo.id} />
         ))}
