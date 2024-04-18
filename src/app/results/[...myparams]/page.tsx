@@ -7,16 +7,6 @@ type Props = {
   };
 };
 
-export const genarateMetadata = ({ params: { myparams } }: Props) => {
-  console.log(myparams);
-
-  const topic = myparams?.[0] ?? "curated";
-  const page = myparams?.[1] ?? "1";
-  return {
-    title: `Results for ${topic} - Page ${page}`,
-  };
-};
-
 const Page = ({ params: { myparams } }: Props) => {
   const topic = myparams?.[0] ?? "curated";
   const page = myparams?.[1] ?? "1";
